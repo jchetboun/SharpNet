@@ -219,12 +219,14 @@ if not args.live:
     model_path = args.model_path
 
     if os.path.isfile(image_path):
+        print('Process', image_path)
         process(image_path, args)
     elif os.path.isdir(image_path):
         if not os.path.isdir(args.outpath):
             os.mkdir(args.outpath)
         images = [image for image in os.listdir(image_path) if (image.endswith(".png") or image.endswith(".jpg"))]
         for image in images:
+            print('Process', image)
             process(os.path.join(image_path, image), args)
 
 else:
